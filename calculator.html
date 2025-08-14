@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculator {
+            background-color: black;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.6);
+            width: 280px;
+        }
+
+        .calculator h3 {
+            color: white;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        #result {
+            width: 100%;
+            height: 50px;
+            background-color: #474646;
+            color: white;
+            text-align: right;
+            font-size: 22px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .calc-button {
+            flex: 1;
+            height: 50px;
+            margin: 3px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+        <h3>Calculator</h3>
+        <input type="text" id="result" disabled>
+
+        <div class="button-row">
+            <button class="btn btn-secondary calc-button" onclick="clearResult()">AC</button>
+            <button class="btn btn-secondary calc-button">+/-</button>
+            <button class="btn btn-secondary calc-button" onclick="append('%')">%</button>
+            <button class="btn btn-warning calc-button" onclick="append('/')">/</button>
+        </div>
+
+        <div class="button-row">
+            <button class="btn btn-dark calc-button" onclick="append('7')">7</button>
+            <button class="btn btn-dark calc-button" onclick="append('8')">8</button>
+            <button class="btn btn-dark calc-button" onclick="append('9')">9</button>
+            <button class="btn btn-warning calc-button" onclick="append('*')">*</button>
+        </div>
+
+        <div class="button-row">
+            <button class="btn btn-dark calc-button" onclick="append('4')">4</button>
+            <button class="btn btn-dark calc-button" onclick="append('5')">5</button>
+            <button class="btn btn-dark calc-button" onclick="append('6')">6</button>
+            <button class="btn btn-warning calc-button" onclick="append('-')">-</button>
+        </div>
+
+        <div class="button-row">
+            <button class="btn btn-dark calc-button" onclick="append('1')">1</button>
+            <button class="btn btn-dark calc-button" onclick="append('2')">2</button>
+            <button class="btn btn-dark calc-button" onclick="append('3')">3</button>
+            <button class="btn btn-warning calc-button" onclick="append('+')">+</button>
+        </div>
+
+        <div class="button-row">
+            <button class="btn btn-dark calc-button" onclick="append('0')">0</button>
+            <button class="btn btn-dark calc-button" onclick="append('.')">.</button>
+            <button class="btn btn-dark calc-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-calculator" viewBox="0 0 16 16">
+                    <path
+                        d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                    <path
+                        d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z" />
+                </svg>
+            </button>
+            <button class="btn btn-warning calc-button" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script>
+        function append(value) {
+            document.getElementById('result').value += value;
+        }
+
+        function clearResult() {
+            document.getElementById('result').value = '';
+        }
+
+        function calculate() {
+            let expression = document.getElementById('result').value;
+            let result = eval(expression);
+            document.getElementById('result').value = result;
+
+        }
+    </script>
+
+</body>
+
+</html>
